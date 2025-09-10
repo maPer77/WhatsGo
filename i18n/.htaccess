@@ -1,0 +1,6 @@
+RewriteEngine on
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{REQUEST_URI} \/(de|en|es|fr|it|pt|hi)\/ [NC]
+RewriteRule ^(.*)$ %{CONTEXT_PREFIX}/i18n/index.php?lang=%1&r=%{REQUEST_URI} [L]

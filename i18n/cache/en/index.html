@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="http://localhost/whatsgo/">
+    <link rel="alternate" hreflang="en" href="https://whatsgo.app/en/">
+    <link rel="alternate" hreflang="de" href="https://whatsgo.app/de/">
+    <link rel="alternate" hreflang="es" href="https://whatsgo.app/es/">
+    <link rel="alternate" hreflang="fr" href="https://whatsgo.app/fr/">
+    <link rel="alternate" hreflang="it" href="https://whatsgo.app/it/">
+    <link rel="alternate" hreflang="pt" href="https://whatsgo.app/pt/">
+    <link rel="alternate" hreflang="hi" href="https://whatsgo.app/hi/">
+    <link rel="alternate" hreflang="x-default" href="https://whatsgo.app/">
+
+    <!-- JS LANGUAGES -->
+    <script>
+        // FAZER : pegar a lingua da url antes /de/ 
+        // ** feito via  htaccess, oq deixa esse código obsoleto pois tambem confere os cookies
+            // if ( window.location.pathname.match( /(de|en|es|fr|it|pt|hi)/ ) ) {
+            //     console.log('match ',window.location.pathname )
+            // }
+
+            // let language = localStorage.getItem(`whatsGo::language`)
+            // if (language === null) { language = navigator.language.slice(0, 2) }
+            // if ( "de/es/en/fr/it/pt/hi".indexOf(language) !== -1 ) {
+            //     console.log('lingua encontrada', language)
+            //     document.documentElement.lang = language
+            //     localStorage.setItem(`whatsGo::language`, language)
+            // }
+    </script>
+
+    <!-- CSS LANGUAGES -->
+    <style>
+        body [lang] { display:none; }
+        html:lang(en) [lang~="en"] { display: inherit; }
+        html:lang(de) [lang~="de"] { display: inherit; }
+        html:lang(es) [lang~="es"] { display: inherit; }
+        html:lang(fr) [lang~="fr"] { display: inherit; }
+        html:lang(it) [lang~="it"] { display: inherit; }
+        html:lang(pt) [lang~="pt"] { display: inherit; }
+        html:lang(hi) [lang~="hi"] { display: inherit; }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsGO.app • WhatsApp Direct Number. Start a conversation without registering the contact !!!</title>
+
+    <!--
+    <script>
+        document.addEventListener('readystatechange', (event) => {
+            console.log(`readystate: ${document.readyState} `)   ;
+        });
+    </script> 
+    -->
+
+    <meta id="metaTags"> 
+        <!-- Facebook Meta Tags -->
+        <meta class="htmlDescription" name="description" content="Start a conversation without registering the contact !!! Enter the number and click to open WhatsApp.">
+        <meta class="htmlKeywords" name="keywords" content="Start a conversation without registering the contact !!! Enter the number and click to open WhatsApp.">
+        <meta class="ogUpdated_time" property="og:updated_time" content="1636036064">
+        <meta class="ogTitle" property="og:title" content="Start a conversation without registering the contact !!!">
+        <meta class="ogDescription" property="og:description" content="Enter the number and click to open WhatsApp.">
+        <meta class="ogUrl" property="og:url" content="https://whatsgo.app/en/">
+        <meta property="og:type" content="article">
+        <meta property="og:image" content="https://whatsgo.app/image/ogImage.png?8">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:site_name" content="WhatsGO.app">
+        <meta property="og:image:width" content="600">
+        <meta property="og:image:height" content="315">
+
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content="whatsgo.app">
+        <meta class="ogUrl" property="twitter:url" content="https://whatsgo.app/en/">
+        <meta class="ogTitle" name="twitter:title" content="Start a conversation without registering the contact !!!">
+        <meta class="ogDescription" name="twitter:description" content="Enter the number and click to open WhatsApp.">
+        <meta name="twitter:image" content="https://whatsgo.app/image/ogImage.png?8">
+    
+
+    <!-- https://realfavicongenerator.net/favicon_result?file_id=p1f40q5n74gng1ct41mmd18ik2vt6#.YIN__pBKguU -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#1dbea5">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="WhatsGO">
+    <meta name="application-name" content="WhatsGO">
+    <meta name="msapplication-TileColor" content="#1dbea5">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="./css/reset.css" media="all">
+    <link rel="stylesheet" href="./node_modules/normalize.css/normalize.css" media="all">
+    <link rel="stylesheet" href="./css/switch.css?5" media="all">
+    <link rel="stylesheet" href="./css/index.css?24" media="all">
+    <link rel="stylesheet" href="./css/pages.css?8" media="all">
+    <link rel="stylesheet" href="./css/countries-list.css?17" media="all">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" media="all"> 
+
+    <!-- COOKIES -->
+    <script defer src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+    <!-- Controla a lista de paises -->
+    <script defer src="./js/country-code.js?49"></script>
+
+    <!-- Detect if is Mobile and change link for WhatsApp -->
+    <script defer src="./js/whatsapplink.js?24"></script>
+
+    <!-- Service Worker -->
+    <script defer src="./sw_register.js?6"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-R62WKDRVJY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R62WKDRVJY');
+    </script>
+
+</head>
+<body>
+
+    <ol id="whatsappDesktop" class="switches">
+        <li>
+            <input type="checkbox" id="whatsappDesktopInput">
+            <label for="whatsappDesktopInput" title="Open in WhatsApp Desktop app.">
+                <span></span>
+                <span>WhatsApp Desktop</span>
+            </label>
+        </li>
+    </ol>
+
+    <div id="languages">
+        <button class="btn language en" data-language="en">
+            <img src="https://whatsgo.app/data/usa.svg" alt="EN" width="30" height="30">
+        </button>
+        <button class="btn language de" data-language="de">
+            <img src="https://whatsgo.app/data/deu.svg" alt="DE" width="30" height="30">
+        </button>
+        <button class="btn language es" data-language="es">
+            <img src="https://whatsgo.app/data/esp.svg" alt="ES" width="30" height="30">
+        </button>
+        <button class="btn language fr" data-language="fr">
+            <img src="https://whatsgo.app/data/fra.svg" alt="FR" width="30" height="30">
+        </button>
+        <button class="btn language it" data-language="it">
+            <img src="https://whatsgo.app/data/ita.svg" alt="IT" width="30" height="30">
+        </button>
+        <button class="btn language pt" data-language="pt">
+            <img src="https://whatsgo.app/data/bra.svg" alt="BR" width="30" height="30">
+        </button>
+        <button class="btn language hi" data-language="hi">
+            <img src="https://whatsgo.app/data/ind.svg" alt="IN" width="30" height="30">
+        </button>
+    </div>
+    <div id="content">
+        <div id="logoBox">
+            <img id="logo" src="./image/whatsgo.svg" alt="WhatsGo" width="300" height="87">
+        </div>
+
+        <div id="info">
+            <span class="langBlock">
+                <span lang="en">Open a direct conversation on WhatsApp without saving the contact on your phone.</span>
+                <span lang="de">Öffnen Sie eine direkte WhatsApp-Konversation, ohne den Kontakt auf Ihrem Telefon zu speichern.</span>
+                <span lang="es">Abra una conversación directa de WhatsApp sin guardar el contacto en su teléfono.</span>
+                <span lang="fr">Ouvrez une conversation WhatsApp directe sans enregistrer le contact sur votre téléphone.</span>
+                <span lang="it">Apri una conversazione WhatsApp diretta senza salvare il contatto sul telefono.</span>
+                <span lang="pt">Abra uma conversa direta no WhatsApp sem salvar o contato em seu telefone.</span>
+                <span lang="hi">अपने फोन पर संपर्क को बचाने के बिना व्हाट्सएप पर सीधी बातचीत खोलें।</span>
+            </span>
+        </div>
+        
+        
+        
+        <section>
+            <div id="formulario">
+                <div id="countryCode">
+                    <input id="callingCode" type="hidden" value="">
+                    <input id="alpha2Code" type="hidden" value="">
+                    <img id="flag" width="100" height="70" alt="" onerror="this.style.visibility='hidden'" onload="this.style.visibility='visible'">
+                    <div class="loader"><img src="./image/loading.gif" alt=""></div>
+                    <div id="code"></div>
+                    <div id="country"></div>
+                    <img id="country-menu" src="./image/country-menu.svg" width="31" height="70" alt="">
+                </div>
+                <input id="phoneNumber" name="phoneNumber" placeholder="(__) _.____.____" type="search" inputmode="numeric" maxlength="14" required autofocus>
+                <button id="whatsappLink" disabled class="btnEnviar">
+                    <img src="./image/arrow-send.svg" width="32" height="32" alt="Send">
+                </button>
+            </div>
+            <div id="messageNumber">
+                <span class="langBlock">
+                    <span lang="en">Enter the contact number.</span>
+                    <span lang="de">Geben Sie die Kontaktnummer ein.</span>
+                    <span lang="es">Ingrese el número de contacto.</span>
+                    <span lang="fr">Entrez le numéro de contact.</span>
+                    <span lang="it">Immettere il numero di contatto.</span>
+                    <span lang="pt">Informe o número de contato.</span>
+                    <span lang="hi">संपर्क नंबर दर्ज करें।</span>
+                </span>
+            </div>
+            <div id="messageSend">
+                <span class="langBlock">
+                    <span lang="en">Click the button to open WhatsApp.</span>
+                    <span lang="de">Klicken Sie auf die Schaltfläche, um WhatsApp zu öffnen.</span>
+                    <span lang="es">Haga clic en el botón para abrir WhatsApp.</span>
+                    <span lang="fr">Cliquez sur le bouton pour ouvrir WhatsApp.</span>
+                    <span lang="it">Fare clic sul pulsante per aprire WhatsApp.</span>
+                    <span lang="pt">Clique no botão para abrir o WhatsApp.</span>
+                    <span lang="hi">व्हाट्सएप खोलने के लिए बटन पर क्लिक करें।</span>
+                </span>
+            </div>
+            
+        </section>
+
+        <div id="countries">
+            <div id="countriesBox">
+                <ul id="countriesList"></ul>
+                <template id="countriesList-item">
+                    <input type="radio" name="country" id="${id}" value="${code}" data-name="${name}" data-alpha3code="${alpha3Code}">
+                    <label for="${id}"><span>${code}</span><span>${name}</span></label>
+                </template>
+            </div>
+        </div>
+
+    </div> <!-- END Content -->
+
+    <!-- Install Box -->
+    <div class="installBox">
+        <button class="installApp">
+            <img src="./image/arrow-download.svg" width="24" height="24" alt="Install" style="margin-right: 12px;">
+            <span class="langBlock">
+                <span lang="en">Install WhatsGO</span>
+                <span lang="de">Installieren Sie WhatsGO</span>
+                <span lang="es">Instalar WhatsGO</span>
+                <span lang="fr">Installer WhatsGO</span>
+                <span lang="it">Installa WhatsGO</span>
+                <span lang="pt">Instalar WhatsGO</span>
+                <span lang="hi">WhatsGO इंस्टॉल करें</span>
+            </span>
+        </button>
+    </div>
+
+    <div class="pages">
+        <!-- <a class="pages-arrow" onclick="document.getElementsByClassName('page-1')[0].scrollIntoView({block: 'start', behavior: 'smooth'});">
+            <img class="onboarding-ed__arrow-teaser__arrow" src="./image/page-arrow.svg" width="16" height="16">
+        </a> -->
+        <div class="page page-1">
+            <img id="maza01" src="./image/maza-02.svg" width="auto" height="60%" alt="">
+            <div class="content">
+                <span class="langBlock">
+                    <span lang="en">
+                        <h1>Simple and fast !!!</h1>
+                        <p>• Enter the number.</p>
+                        <p>• Click send.</p>
+                        <p style="font-weight: 400;">WhatsApp will open with the contact ready to send messages.</p>
+                    </span>
+                    <span lang="de">
+                        <h1>Einfach und schnell !!!</h1>
+                        <p>• Geben Sie die Nummer ein.</p>
+                        <p>• Klicken Sie auf Senden.</p>
+                        <p style="font-weight: 400;">WhatsApp wird mit dem Kontakt geöffnet, der zum Senden von Nachrichten bereit ist.</p>
+                    </span>
+                    <span lang="es">
+                        <h1>¡¡¡Sencillo y rápido !!!</h1>
+                        <p>• Ingrese el número.</p>
+                        <p>• Haga clic en enviar.</p>
+                        <p style="font-weight: 400;">WhatsApp se abrirá con el contacto listo para enviar mensajes.</p>
+                    </span>
+                    <span lang="fr">
+                        <h1>Simple et rapide !!!</h1>
+                        <p>• Entrez le numéro.</p>
+                        <p>• Cliquez sur envoyer.</p>
+                        <p style="font-weight: 400;">WhatsApp s'ouvrira avec le contact prêt à envoyer des messages.</p>
+                    </span>
+                    <span lang="it">
+                        <h1>Semplice e veloce !!!</h1>
+                        <p>• Immettere il numero.</p>
+                        <p>• Fare clic su invia.</p>
+                        <p style="font-weight: 400;">WhatsApp si aprirà con il contatto pronto per inviare messaggi.</p>
+                    </span>
+                    <span lang="pt">
+                        <h1>Simples e rápido !!!</h1>
+                        <p>• Informe o número.</p>
+                        <p>• Clique em enviar.</p>
+                        <p style="font-weight: 400;">O WhatsApp vai abrir com o contato pronto para enviar mensagens.</p>
+                    </span>
+                    <span lang="hi">
+                        <h1>सरल और तेज !!!</h1>
+                        <p>• नंबर दर्ज करें।</p>
+                        <p>• भेजें क्लिक करें.</p>
+                        <p style="font-weight: 400;">संदेश भेजने के लिए तैयार संपर्क के साथ व्हाट्सएप खुल जाएगा।</p>
+                    </span>
+                </span>
+            </div>
+        </div>
+
+
+        <div class="page page-2">
+            <div class="content">
+                <div>
+                    <img class="icones" src="./image/icon-mobile.svg" width="50" height="50" alt="">
+                    <img class="icones" src="./image/icon-browser.svg" width="50" height="50" alt="">
+                    <img class="icones" src="./image/icon-desktop.svg" width="50" height="50" alt="">
+                    <img class="icones" src="./image/icon-apple.svg" width="50" height="50" alt="">
+                    <img class="icones" src="./image/icon-windows.svg" width="50" height="50" alt="">
+                    <img class="icones" src="./image/icon-android.svg" width="50" height="50" alt="">
+                </div>
+                <span class="langBlock">
+                    <span lang="en">
+                        <h1>Use on any device!</h1>
+                        <p>You can use it on any browser on any device, you can also install it as an application.</p>
+                    </span>
+                    <span lang="de">
+                        <h1>Auf jedem Gerät verwenden!</h1>
+                        <p>Sie können es in jedem Browser auf jedem Gerät verwenden und als Anwendung installieren.</p>
+                    </span>
+                    <span lang="es">
+                        <h1>¡Úselo en cualquier dispositivo!</h1>
+                        <p>Puede usarlo en cualquier navegador en cualquier dispositivo, también puede instalarlo como una aplicación.</p>
+                    </span>
+                    <span lang="fr">
+                        <h1>Utilisez sur n'importe quel appareil!</h1>
+                        <p>Vous pouvez l'utiliser sur n'importe quel navigateur sur n'importe quel appareil, vous pouvez également l'installer en tant qu'application.</p>
+                    </span>
+                    <span lang="it">
+                        <h1>Usa su qualsiasi dispositivo!</h1>
+                        <p>Puoi usarlo su qualsiasi browser su qualsiasi dispositivo, puoi anche installarlo come applicazione.</p>
+                    </span>
+                    <span lang="pt">
+                        <h1>Utilize em qualquer dispositivo!</h1>
+                        <p>Você pode usar em qualquer navegador de qualquer dispositivo, também pode instalar como um aplicativo.</p>
+                    </span>
+                    <span lang="hi">
+                        <h1>किसी भी डिवाइस पर प्रयोग करें!</h1>
+                        <p>आप इसे किसी भी डिवाइस पर किसी भी ब्राउज़र पर उपयोग कर सकते हैं, आप इसे एप्लिकेशन के रूप में भी इंस्टॉल कर सकते हैं।</p>
+                    </span>
+                </span>
+                <button class="installApp">
+                    <img src="./image/arrow-download.svg" width="24" height="24" alt="Install" style="margin-right: 12px;">
+                    <span class="langBlock">
+                        <span lang="en">Install WhatsGO</span>
+                        <span lang="de">Installieren Sie WhatsGO</span>
+                        <span lang="es">Instalar WhatsGO</span>
+                        <span lang="fr">Installer WhatsGO</span>
+                        <span lang="it">Installa WhatsGO</span>
+                        <span lang="pt">Instalar WhatsGO</span>
+                        <span lang="hi">WhatsGO इंस्टॉल करें</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+
+        <div class="page page-3">
+            <img id="maza02" src="./image/maza-01.svg" width="auto" height="60%" alt="">
+            <div class="content">
+                <span class="langBlock">
+                    <span lang="en">
+                        <h1>We do not store your personal information.</h1>
+                        <p>We do not collect or share any personal information about you.</p>
+                    </span>
+                    <span lang="de">
+                        <h1>Wir speichern Ihre persönlichen Daten nicht.</h1>
+                        <p>Wir sammeln oder teilen keine persönlichen Informationen über Sie.</p>
+                    </span>
+                    <span lang="es">
+                        <h1>No almacenamos su información personal.</h1>
+                        <p>No recogemos o compartir cualquier información personal sobre usted.</p>
+                    </span>
+                    <span lang="fr">
+                        <h1>Nous ne stockons pas vos informations personnelles.</h1>
+                        <p>Nous ne collectons ni ne partageons aucune information personnelle vous concernant.</p>
+                    </span>
+                    <span lang="it">
+                        <h1>Non memorizziamo le tue informazioni personali.</h1>
+                        <p>Non raccogliamo né condividiamo alcuna informazione personale su di te.</p>
+                    </span>
+                    <span lang="pt">
+                        <h1>Não armazenamos suas informações pessoais.</h1>
+                        <p>Não coletamos nem compartilhamos qualquer informação pessoal sua.</p>
+                    </span>
+                    <span lang="hi">
+                        <h1>हम आपकी व्यक्तिगत जानकारी संग्रहीत नहीं करते हैं।</h1>
+                        <p>हम आपके बारे में कोई व्यक्तिगत जानकारी एकत्र या साझा नहीं करते हैं।</p>
+                    </span>
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        // alert('head inicio');
+        let language = localStorage.getItem(`whatsGo::language`)
+        if (language === null) {
+            language = navigator.language.slice(0, 2)
+        }
+        // Pode ser usado test() 
+        // -->> /pt|fr/i.test(language);
+
+        // Pode ser usado indexOf() 
+        // --> 'pt/fr'.indexOf(language) !== -1
+
+        // Pode ser usado indexOf() 
+        // --> 'pt/fr'.includes(language) 
+
+        languages = 'pt/fr' 
+        if ( 'pt/fr'.indexOf(language) !== -1 ) {
+            console.log('lingua encontrada', language)
+            localStorage.setItem(`whatsGo::language`, language)
+            document.documentElement.lang = language
+        } else {
+            localStorage.setItem(`whatsGo::language`, 'en')
+        }
+        // Seleciona todos elementos que tem uma linguagem definida mas nao tem 'pt'
+        // Pode ser usado para se quiser excluir estes elementos do DOM
+        // Para o DOM ficar com menos elelentos na memoria, mas no caso de troca de linguagem tem que fazer um reload
+        // se os elementos nao são excluidos a troca de linguagem é instantânea
+        // Code--->>> document.querySelectorAll("html:lang(pt) [lang]:not([lang~='pt'])");
+    </script>
+    <meta charset=utf-8 />
+    <title>Test Page</title>
+
+    <script refer src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+    <script>
+        function appendheaderfooter() {
+            // alert('onload');
+            var header = "<div style='position:fixed;top:0px;background-color:aqua;'>header html</div>";
+            var footer = "<div style='position:fixed;bottom:0px;background-color:aqua;'>footer html</div>"
+            $("body").append(header + footer);
+            // document.body.classList.add("foo");
+        }
+        window.onload = appendheaderfooter;
+
+        document.write("<style>.foo {  background-color: antiquewhite; }</style>");
+        document.write("<div>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>");
+        // alert('head fim');
+    </script>
+
+    <style>
+        div {  width: 100%; }
+        body [lang] { display:none; }
+        
+        /* html {color: red;} */
+        /* html.en [lang="en"] { color: red; } */
+
+        html[lang~="en"] [lang~="en"] { display: inherit; }
+        html[lang~="pt"] [lang~="pt"] { display: inherit; }
+        html:lang(fr) [lang~="fr"] { display: inherit; }
+
+        body {
+            font-family: system-ui;
+        }
+
+        body .title {
+            font-size: 80px;
+            font-weight: 100;
+            text-shadow: 2px 2px 4px #ff000080;
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+    <!-- <script> alert('body inicio');</script> -->
+    <br />
+    <div class="title">
+        <span lang="pt">Conteudo vai aqui</span>
+        <span lang="en fr">Content goes here</span>
+    </div>
+    <div>SEM IDIOMA</div>
+    <a href="https://stackoverflow.com/a/5642299/6231162">https://stackoverflow.com/a/5642299/6231162</a>
+</body>
+
+
+<script>
+    // alert('body fim script');
+    document.body.classList.add("foo");
+    // alert('body fim');
+</script>
+
+</html>

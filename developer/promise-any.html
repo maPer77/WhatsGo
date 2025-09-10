@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    url2 = 'https://api.ipdata.co/?api-key=fffa7cea25ed36143ad42f42a817708ad147c6557a6e2c7dfc4aa333' // 1.5k - dia // 45k mes // EUA/amazon
+    url1 = 'https://ipinfo.io/json?token=631a25319ecf43'  // 50k - mes // EUA/google
+    url3 = 'https://ipapi.co/json/' // 1k - dia // 30k - mes // EUA /coudflare
+    url5 = 'http://www.geoplugin.net/json.gp' // nao informa // frança/ovh sas
+    url4 = 'https://ip-api.io/json' // 12k por mes // canada/ovh hosting
+    url6 = 'https://ipwhois.app/json/' // 10k por mes // EUA/coudflare
+    url7 = 'https://www.cloudflare.com/cdn-cgi/trace' // free // EUA/coudflare
+    
+    url5ssl = 'https://images' + ~~(Math.random() * 3333) + '-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=' + url5;
+     
+
+    promise2 = fetch(url2)
+    .then((response)=>{
+        return response.ok ? response.json() : Promise.reject()
+    }).then((json)=>{
+        if( json.country_code == undefined ) return Promise.reject()
+        let data = [json.country_code,'api.ipdata.co']
+        console.log(data)
+        return data
+    })
+
+
+    promise1 = fetch(url1)
+    .then((response)=>{
+        return response.ok ? response.json() : Promise.reject()
+    }).then((json)=>{
+        if( json.country == undefined ) return Promise.reject()
+        let data = [json.country,'ipinfo.io' ]
+        console.log(data)
+        return data
+    })
+
+
+    promise3 = fetch(url3)
+    .then((response)=>{
+        return response.ok ? response.json() : Promise.reject()
+    }).then((json)=>{
+        if( json.country == undefined ) return Promise.reject()
+        let data = [json.country,'ipapi.co']
+        console.log(data)
+        return data
+    })
+
+    
+    promise5 = fetch(url5)
+    .then((response)=>{
+        return response.ok ? response.json() : Promise.reject()
+    }).then((json)=>{
+        if( json.geoplugin_countryCode == undefined ) return Promise.reject()
+        let data = [json.geoplugin_countryCode,'geoplugin.net' ]
+        console.log(data)
+        return data
+    })
+
+    promise5ssl = fetch(url5ssl)
+    .then((response)=>{
+        return response.ok ? response.json() : Promise.reject()
+    }).then((json)=>{
+        if( json.geoplugin_countryCode == undefined ) return Promise.reject()
+        let data = [json.geoplugin_countryCode,'geoplugin.net' ]
+        console.log(data)
+        return data
+    })
+
+
+    promise4 = fetch(url4)
+    .then((response)=>{
+        return response.ok ? response.json() : Promise.reject()
+    }).then((json)=>{
+        if( json.country_code == undefined ) return Promise.reject()
+        let data = [json.country_code,'ip-api.io' ]
+        console.log(data)
+        return data
+    })
+
+
+    promise6 = fetch(url6)
+    .then((response)=>{
+        return response.ok ? response.json() : Promise.reject()
+    }).then((json)=>{
+        if( json.country_code == undefined ) return Promise.reject()
+        let data = [json.country_code,'ipwhois.app' ]
+        console.log(data)
+        return data
+    })
+
+
+    promise7 = fetch(url7)
+    .then(response => {
+        return response.ok ? response.text() : Promise.reject()
+    }).then((text)=>{
+        let json = text.trim().split('\n').reduce(function(obj, pair) {
+            pair = pair.split('=');
+            return obj[pair[0]] = pair[1], obj;
+        }, {});
+        return json
+    }).then((json)=>{
+        if( json.loc == undefined ) return Promise.reject()
+        let data = [json.loc,'cloudflare.com' ]
+        console.log(data)
+        return data
+    })
+
+    // const promise2 = fetch(url2).then(response=>response.json()).then(json=>json.country_code)
+    // const promise3 = fetch(url3).then(response=>response.json()).then(json=>json.country)
+    // const promise4 = fetch(url4).then(response=>response.json()).then(json=>json.country_code)
+
+    const promises = [promise1, promise2, promise3, promise4, promise5, promise5ssl, promise6, promise7 ];
+    Promise.any(promises).then((value) => console.log("Resultado...: ", value));
+
+</script>
+    
+</body>
+</html>
+
+

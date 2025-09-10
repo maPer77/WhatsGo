@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} !^https://%{HTTP_HOST}$
+RewriteRule https://whatsgo.app/erros/404.html [R=404,NC,L]

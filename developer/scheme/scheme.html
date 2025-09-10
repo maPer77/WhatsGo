@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+</head>
+
+<body>
+
+
+
+
+  <!-- https://stackoverflow.com/a/32358608/6231162 -->
+  <!-- https://jsfiddle.net/5nuz8gfw/ -->
+  <!-- https://jsfiddle.net/5nuz8gfw/8/ -->
+  <a id="link">Click Me</a>
+  <script>
+    var link = document.getElementById('link');
+    var timeout;
+    
+    
+
+    link.addEventListener('click', function (e) {
+
+      timeout = window.setTimeout(function () {
+        window.removeEventListener('blur', functionBlur);
+        console.log('timeout');
+        Cookies.set('desktopVersion', 'false', { expires: 3650 });
+        alert("Versão desktop nao encontrada.");
+      }, 500);
+
+      window.addEventListener('blur', functionBlur, false);
+      window.location = "skype://send?phone=55";
+      e.preventDefault();
+    });
+
+    function functionBlur() {
+      window.clearTimeout(timeout);
+      Cookies.set('desktopVersion', 'true', { expires: 7 });
+    }
+
+ 
+        // newWindow !== undefined ? newWindow.close() : null;
+        // newWindow = window.open("https://google.com.br", "whatsapp");
+        // newWindow.close();
+        // newWindow = window.open("https://google.com.br", "whatsapp");
+
+
+  </script>
+
+
+
+
+</body>
+
+</html>

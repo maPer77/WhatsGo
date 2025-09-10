@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+
+function getAlpha2CodeApi() {
+    url1 = 'https://www.cloudflare.com/cdn-cgi/trace' // free // EUA/coudflare
+    url2 = 'https://api.ipdata.co/?api-key=fffa7cea25ed36143ad42f42a817708ad147c6557a6e2c7dfc4aa333' // 1.5k - dia // 45k mes // EUA/amazon
+    url3 = 'https://ipinfo.io/json?token=631a25319ecf43'  // 50k - mes // EUA/google
+    
+    cloudflare = fetch(url2).then(response => response.json())
+    .then(json => {
+        if( json.country_code == undefined ) throw('Error!!!')
+        return json.country_code
+    })
+
+    ipdata = fetch(url3).then(response => response.json())
+    .then(json => {
+        if( json.country == undefined ) throw('Error!!!')
+        return json.country
+    })
+
+    ipinfo = fetch(url1).then(response => response.text())
+    .then(text => {
+        let json = text.trim().split('\n').reduce(function(object, line) {
+            line = line.split('=')
+            object[line[0]] = line[1]
+            return object;
+        }, {});
+        return json
+    }).then(json => {
+        if( json.loc == undefined ) throw('Error!!!')
+        return json.loc
+    })
+
+    return Promise.any( [cloudflare, ipdata, ipinfo] )
+        .then(value => {
+            // console.log("Resultado...: ", value)
+            return value
+        })
+        .catch((error)=>{
+            console.error('ERROR... ',error);
+            return false;
+        });
+    
+}
+
+async function teste() { 
+    alpha2Code = await getAlpha2CodeApi()
+    console.log( alpha2Code)
+}
+
+teste()
+</script>
+    
+</body>
+</html>
+
+

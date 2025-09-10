@@ -1,0 +1,93 @@
+/* https://webdesign.tutsplus.com/tutorials/toggle-switch-component-with-css-checkbox-hack--cms-35011 */
+
+:root {
+    --white: #ffffff;
+    --gray: #acacac;
+    --green: #00e676;
+  }
+  
+  ol {
+    list-style: none;
+  }
+  
+  label {
+    cursor: pointer;
+  }
+  
+  [type="checkbox"] {
+    position: absolute;
+    left: -9999px;
+  }
+  
+  .switches {
+    font-weight: 300;
+    color: var(--white);
+    display: none;
+  }
+  
+  .switches li:not(:first-child) {
+    border-bottom: 1px solid var(--gray);
+  }
+
+  
+  .switches label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+  }
+  
+  .switches span:first-child {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.4);
+    background: var(--gray);
+    transition: all 0.3s;
+    margin-right: 10px;
+  }
+  
+  .switches span:first-child::before,
+  .switches span:first-child::after {
+    content: "";
+    position: absolute;
+  }
+  
+  .switches span:first-child::before {
+    left: 1px;
+    top: 1px;
+    width: 24px;
+    height: 24px;
+    background: var(--white);
+    border-radius: 50%;
+    z-index: 1;
+    transition: transform 0.3s;
+  }
+  
+  .switches span:first-child::after {
+    top: 50%;
+    right: 8px;
+    width: 12px;
+    height: 12px;
+    transform: translateY(-50%);
+    /* background: url(./uncheck-switcher.svg); */
+    background-size: 12px 12px;
+  }
+  
+  .switches [type="checkbox"]:checked + label span:first-child {
+    background: var(--green);
+  }
+  
+  .switches [type="checkbox"]:checked + label span:first-child::before {
+    transform: translateX(24px);
+  }
+  
+  .switches [type="checkbox"]:checked + label span:first-child::after {
+    width: 14px;
+    height: 14px;
+    /*right: auto;*/
+    left: 8px;
+    /* background-image: url(./checkmark-switcher.svg); */
+    background-size: 14px 14px;
+  }

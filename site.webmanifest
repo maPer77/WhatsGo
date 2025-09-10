@@ -1,0 +1,20 @@
+{
+    "name": "WhatsGO.app",
+    "short_name": "WhatsGO",
+    "start_url": "./",
+    "icons": [
+        {
+            "src": "./android-chrome-192x192.png?v=vMgJ9k653N",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./android-chrome-512x512.png?v=vMgJ9k653N",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#1dbea5",
+    "background_color": "#1dbea5",
+    "display": "standalone"
+}
